@@ -10,10 +10,10 @@ app.post('/events', (req, res) => {
     console.log(req.body);
 
     // Webhook request event type is a challenge-response check
-    if(request.body.event === 'endpoint.url_validation') {
-        const hashForValidate = crypto.createHmac('sha256', ZOOM_WEBHOOK_SECRET_TOKEN).update(request.body.payload.plainToken).digest('hex')
+    if(req.body.event === 'endpoint.url_validation') {
+        const hashForValidate = crypto.createHmac('sha256', ZOOM_WEBHOOK_SECRET_TOKEN).update(req.body.payload.plainToken).digest('hex')
     
-        res.status(200).json({"plainToken": request.body.payload.plainToken, "encryptedToken": hashForValidate})
+        res.status(200).json({"plainToken": req.body.payload.plainToken, "encryptedToken": hashForValidate})
     }
     
     res.status(200).send('received');
