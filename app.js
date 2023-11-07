@@ -1,8 +1,11 @@
 const bodyParser = require('body-parser');
 const crypto = require('crypto')
 const express = require('express')
+
 const app = express()
+
 const port = process.env.PORT || 3000
+const ZOOM_WEBHOOK_SECRET_TOKEN = process.env.ZOOM_WEBHOOK_SECRET_TOKEN;
 
 app.use(bodyParser.json());
 
