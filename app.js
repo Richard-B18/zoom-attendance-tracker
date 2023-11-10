@@ -82,7 +82,6 @@ async function getAccessToken(req, res, next) {
 }
 
 app.post('/create-meeting', getAccessToken, async (req, res) => {
-    console.log(req.accessToken)
     try {
         const response = await axios.post(`${ZOOM_API}/users/${USER_ID}/meetings/`,
         // the only required field to create a meeting
